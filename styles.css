@@ -461,23 +461,6 @@ h3 {
   padding-left: 2rem;
 }
 
-.prozess li::after {
-  position: absolute;
-  top: 50%;
-  width: 34px;
-  height: 1px;
-  background: rgba(47, 107, 87, 0.22);
-  content: "";
-}
-
-.prozess li:nth-child(odd)::after {
-  right: -34px;
-}
-
-.prozess li:nth-child(even)::after {
-  left: -34px;
-}
-
 .prozess span,
 .schritte span {
   display: inline-grid;
@@ -878,12 +861,6 @@ button {
     width: 100%;
     justify-self: stretch;
     padding: 1rem;
-  }
-
-  .prozess li::after,
-  .prozess li:nth-child(odd)::after,
-  .prozess li:nth-child(even)::after {
-    display: none;
   }
 
   .karte,

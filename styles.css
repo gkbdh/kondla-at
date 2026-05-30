@@ -686,8 +686,20 @@ h3 {
 }
 
 .formular__feld--voll,
+.formular__hinweis,
 .formular__button {
   grid-column: 1 / -1;
+}
+
+.formular__hinweis {
+  color: var(--text-weich);
+  font-size: 0.86rem;
+}
+
+.formular__hinweis a {
+  border-bottom: 1px solid var(--akzent);
+  color: var(--akzent-dunkel);
+  font-weight: 650;
 }
 
 label {
@@ -732,6 +744,59 @@ button {
   padding: 28px 0 44px;
   color: var(--text-weich);
   font-size: 0.92rem;
+}
+
+.fuss__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.recht {
+  width: min(840px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.recht__kopf,
+.recht__block {
+  display: grid;
+  gap: 1rem;
+}
+
+.recht__kopf {
+  margin-bottom: 3rem;
+}
+
+.recht__block {
+  border-top: 1px solid var(--linie);
+  padding: 2rem 0;
+}
+
+.recht h1 {
+  white-space: normal;
+}
+
+.recht h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.recht ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--text-weich);
+}
+
+.recht p,
+.recht li {
+  color: var(--text-weich);
+}
+
+.recht a {
+  border-bottom: 1px solid var(--akzent);
+  color: var(--akzent-dunkel);
+  font-weight: 650;
 }
 
 @media (max-width: 980px) {
@@ -860,5 +925,9 @@ button {
 
   .fuss {
     flex-direction: column;
+  }
+
+  .fuss__links {
+    justify-content: flex-start;
   }
 }

@@ -19,7 +19,7 @@
           <span></span>
         </span>
         <span class="marke__text">
-          <strong>Kondla</strong>
+          <strong>KONDLA</strong>
           <span>work.flows</span>
         </span>
       </a>
@@ -386,8 +386,7 @@
             ruhiges Gespräch über Aufwand, Beteiligte, Dokumente, Stabilität und mögliche Entlastung.
           </p>
         </div>
-        <form class="formular" name="workflow-review" method="post" data-netlify="true">
-          <input type="hidden" name="form-name" value="workflow-review" />
+        <form class="formular" id="workflow-form">
           <div class="formular__feld">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" autocomplete="name" required />
@@ -404,6 +403,10 @@
             <label for="prozess">Kurze Beschreibung des Prozesses</label>
             <textarea id="prozess" name="prozess" rows="5" required></textarea>
           </div>
+          <p class="formular__hinweis">
+            Die Angaben werden zur Bearbeitung Ihrer Anfrage verwendet. Weitere Informationen finden Sie in der
+            <a href="datenschutz.html">Datenschutzerklärung</a>.
+          </p>
           <button class="button button--primaer formular__button" type="submit">Workflow-Review anfragen</button>
         </form>
       </section>
@@ -411,7 +414,11 @@
 
     <footer class="fuss">
       <p>Kondla Workflows. Interne Werkzeuge für administrative Arbeit, Dokumentation und Prozesse.</p>
-      <a href="#oben">Nach oben</a>
+      <div class="fuss__links">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#oben">Nach oben</a>
+      </div>
     </footer>
     <script>
       const navLinks = Array.from(document.querySelectorAll("[data-nav-section]"));
@@ -482,6 +489,29 @@
         window.addEventListener("resize", updateHeaderCta);
         window.addEventListener("load", updateHeaderCta);
         updateHeaderCta();
+      }
+
+      const workflowForm = document.querySelector("#workflow-form");
+
+      if (workflowForm) {
+        workflowForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(workflowForm);
+          const subject = "Workflow-Review Anfrage";
+          const body = [
+            "Workflow-Review Anfrage",
+            "",
+            `Name: ${formData.get("name") || ""}`,
+            `E-Mail: ${formData.get("email") || ""}`,
+            `Unternehmen: ${formData.get("unternehmen") || ""}`,
+            "",
+            "Kurze Beschreibung des Prozesses:",
+            formData.get("prozess") || ""
+          ].join("\n");
+
+          window.location.href = `mailto:robert@kondla.at?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
       }
 
     </script>

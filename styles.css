@@ -330,6 +330,7 @@ h3 {
 .abschnitt {
   padding: 96px 0;
   border-top: 1px solid var(--linie);
+  scroll-margin-top: 92px;
 }
 
 .abschnitt__kopf {
@@ -505,6 +506,11 @@ h3 {
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.9fr);
 }
 
+.kontrolltafel {
+  display: grid;
+  gap: 1rem;
+}
+
 .vertrauen {
   display: grid;
   gap: 0.75rem;
@@ -532,9 +538,70 @@ h3 {
   content: "";
 }
 
+.datenfluss {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: #f1f0eb;
+  overflow: hidden;
+}
+
+.datenfluss__titel {
+  border-bottom: 1px solid var(--linie);
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.datenfluss div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 1rem;
+  border-bottom: 1px solid var(--linie);
+  padding: 0.95rem 1rem;
+  background: var(--flaeche);
+}
+
+.datenfluss div:last-child {
+  border-bottom: 0;
+}
+
+.datenfluss span {
+  color: var(--akzent-dunkel);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.datenfluss p {
+  color: var(--text-weich);
+  font-size: 0.92rem;
+}
+
 .erkenntnis__text {
   display: grid;
   gap: 1rem;
+}
+
+.kontextfragen {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 0.3rem;
+}
+
+.kontextfragen span {
+  border: 1px solid rgba(138, 95, 71, 0.28);
+  border-radius: 6px;
+  padding: 0.72rem 0.8rem;
+  background: #f6f1ed;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.25;
 }
 
 .erkenntnis__text a {
@@ -599,6 +666,7 @@ h3 {
   padding: clamp(1.4rem, 4vw, 3rem);
   background: var(--flaeche);
   box-shadow: var(--schatten);
+  scroll-margin-top: 92px;
 }
 
 .kontakt__text {
@@ -746,9 +814,15 @@ button {
   }
 
   .raster--drei,
+  .kontextfragen,
   .schritte,
   .formular {
     grid-template-columns: 1fr;
+  }
+
+  .datenfluss div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
   }
 
   .prozess {

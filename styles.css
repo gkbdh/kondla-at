@@ -365,8 +365,7 @@ h3 {
 .schritte p,
 .prozess p,
 .liste p,
-.vertrauen li,
-.erkenntnis__text p {
+.vertrauen li {
   color: var(--text-weich);
 }
 
@@ -584,36 +583,6 @@ h3 {
 .datenfluss p {
   color: var(--text-weich);
   font-size: 0.92rem;
-}
-
-.erkenntnis__text {
-  display: grid;
-  gap: 1rem;
-}
-
-.kontextfragen {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
-  margin-bottom: 0.3rem;
-}
-
-.kontextfragen span {
-  border: 1px solid rgba(138, 95, 71, 0.28);
-  border-radius: 6px;
-  padding: 0.72rem 0.8rem;
-  background: #f6f1ed;
-  color: var(--text);
-  font-size: 0.9rem;
-  font-weight: 650;
-  line-height: 1.25;
-}
-
-.erkenntnis__text a {
-  width: fit-content;
-  border-bottom: 1px solid var(--akzent);
-  color: var(--akzent-dunkel);
-  font-weight: 650;
 }
 
 .person {
@@ -884,7 +853,6 @@ button {
   }
 
   .raster--drei,
-  .kontextfragen,
   .schritte,
   .formular {
     grid-template-columns: 1fr;

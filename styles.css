@@ -66,6 +66,24 @@ h1 {
 h1 span {
   display: block;
   white-space: nowrap;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: einblenden 500ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+h1 span:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+h1 span:nth-child(3) {
+  animation-delay: 160ms;
+}
+
+@keyframes einblenden {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {
@@ -148,14 +166,26 @@ h3 {
   height: 2px;
   border-radius: 999px;
   background: var(--akzent-dunkel);
+  opacity: 0;
+  transform: translateX(-4px);
+  animation: zeichen-einblenden 360ms ease forwards;
 }
 
 .marke__zeichen span:nth-child(2) {
   width: 68%;
+  animation-delay: 70ms;
 }
 
 .marke__zeichen span:nth-child(3) {
   width: 84%;
+  animation-delay: 140ms;
+}
+
+@keyframes zeichen-einblenden {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .navigation {
@@ -353,12 +383,27 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.raster--zwei {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .karte {
   min-height: 190px;
   border: 1px solid var(--linie);
   border-radius: var(--radius);
   padding: 1.3rem;
   background: var(--flaeche);
+  transition:
+    opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.karte:hover {
+  border-color: color-mix(in srgb, var(--akzent) 22%, var(--linie));
+  box-shadow: 0 14px 38px rgba(31, 37, 35, 0.06);
+  transform: translateY(-3px);
 }
 
 .karte p,
@@ -406,6 +451,9 @@ h3 {
   align-items: start;
   border-bottom: 1px solid var(--linie);
   padding: 1.05rem 0;
+  transition:
+    opacity 380ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 380ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .liste span,
@@ -449,6 +497,11 @@ h3 {
   padding: 1.05rem 1.15rem;
   background: var(--flaeche);
   box-shadow: 0 12px 34px rgba(31, 37, 35, 0.04);
+  transition:
+    opacity 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .prozess li:nth-child(odd) {
@@ -512,6 +565,9 @@ h3 {
   border-radius: var(--radius);
   padding: 0.95rem 1rem 0.95rem 2.7rem;
   background: var(--flaeche);
+  transition:
+    opacity 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .vertrauen li::before {
@@ -523,6 +579,20 @@ h3 {
   border: 2px solid var(--akzent);
   border-radius: 50%;
   content: "";
+  transform: scale(1);
+  transition: transform 260ms ease;
+}
+
+.vertrauen li.ist-sichtbar::before {
+  transform: scale(1.12);
+}
+
+.vertrauen li.wird-animiert::before {
+  transform: scale(0.72);
+}
+
+.vertrauen li.wird-animiert.ist-sichtbar::before {
+  transform: scale(1.12);
 }
 
 .datenfluss {
@@ -551,6 +621,9 @@ h3 {
   border-bottom: 1px solid var(--linie);
   padding: 0.95rem 1rem;
   background: var(--flaeche);
+  transition:
+    opacity 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .datenfluss div:last-child {
@@ -610,6 +683,11 @@ h3 {
   border-radius: var(--radius);
   padding: 1.15rem;
   background: var(--flaeche);
+  transition:
+    opacity 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 180ms ease,
+    border-color 180ms ease;
 }
 
 .kontakt {
@@ -836,6 +914,7 @@ button {
   }
 
   .raster--drei,
+  .raster--zwei,
   .schritte,
   .formular {
     grid-template-columns: 1fr;
@@ -879,5 +958,39 @@ button {
 
   .fuss__links {
     justify-content: flex-start;
+  }
+}
+
+.wird-animiert {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.wird-animiert.ist-sichtbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.karte.wird-animiert.ist-sichtbar:hover,
+.schritte article.wird-animiert.ist-sichtbar:hover {
+  transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+
+  .wird-animiert {
+    opacity: 1;
+    transform: none;
   }
 }

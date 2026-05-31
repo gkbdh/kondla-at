@@ -643,9 +643,11 @@ h3 {
 
 .person {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
-  gap: clamp(2rem, 7vw, 5rem);
-  align-items: center;
+  grid-template-columns: clamp(240px, 28vw, 340px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  padding-top: 76px;
+  padding-bottom: 76px;
 }
 
 .person__bild {
@@ -666,6 +668,11 @@ h3 {
 .person__text {
   display: grid;
   gap: 1rem;
+  padding-top: 0.15rem;
+}
+
+.person__text p {
+  max-width: 760px;
 }
 
 .schritte {
@@ -838,7 +845,6 @@ button {
   .held,
   .zweispaltig,
   .zweispaltig--eng,
-  .person,
   .kontakt {
     grid-template-columns: 1fr;
   }
@@ -864,12 +870,17 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .person__bild {
-    width: min(320px, 100%);
-  }
 }
 
 @media (max-width: 760px) {
+  .person {
+    grid-template-columns: 1fr;
+  }
+
+  .person__bild {
+    width: min(300px, 100%);
+  }
+
   h1 span {
     display: inline;
     white-space: normal;
